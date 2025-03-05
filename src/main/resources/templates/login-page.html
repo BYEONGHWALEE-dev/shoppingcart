@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    /* 전체 배경 스타일 */
+    body {
+      background-color: #FFC0CB; /* 분홍색 배경 */
+      text-align: center;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* 로그인 폼 컨테이너 */
+    .login-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    /* 입력 필드 */
+    input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* 로그인 버튼 */
+    .submit-btn {
+      background-color: #FF69B4; /* 진한 핑크 버튼 */
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .submit-btn:hover {
+      background-color: #FF1493; /* 버튼 hover 효과 */
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <h2>로그인</h2>
+  <form action="#">
+    <input type="text" placeholder="ID" required>
+    <input type="password" placeholder="Password" required>
+    <button type="submit" class="submit-btn">로그인</button>
+  </form>
+</div>
+
+</body>
+</html>
