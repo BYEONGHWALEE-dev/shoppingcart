@@ -21,6 +21,8 @@ public interface ProductDAO {
     // add method
     void addProduct(Product product);
 
+    void addIntoCart(Cart cart, Product product);
+
     Cart addCart();
 
     void addUser(User user);

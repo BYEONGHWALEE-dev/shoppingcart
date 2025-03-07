@@ -19,7 +19,7 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    @Column(name = "imgae_URL")
+    @Column(name = "image_URL")
     private String image_URL;
 
     //constructor

@@ -18,11 +18,11 @@ public class ProductApplication {
 
 	}
 
-
+	/*
 	@Bean
 	CommandLineRunner commandLineRunner(ProductDAO productDAO) {
 		return args -> {
-			productDAO.deleteUser(1);
+			addUser(productDAO);
 		};
 	}
 
@@ -41,5 +41,5 @@ public class ProductApplication {
 
 	}
 
-
+	*/
 }

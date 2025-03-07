@@ -14,14 +14,6 @@ public class User {
     @Column(name = "name")
     private String name;
 
-    public Cart getCart() {
-        return cart;
-    }
-
-    public void setCart(Cart cart) {
-        this.cart = cart;
-    }
-
     @Column(name = "password")
     private String password;
 
@@ -65,4 +57,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
 }

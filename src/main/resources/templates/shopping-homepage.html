@@ -10,39 +10,51 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .products {
+
+        .product-container {
             display: flex;
-            justify-content: space-around;
-            gap: 20px;
+            flex-wrap: wrap; /* 자동으로 줄바꿈 처리 */
+            justify-content: space-between; /* 카드 간격을 일정하게 */
+            gap: 20px; /* 카드들 사이의 간격 */
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
         }
-        .product {
-            background: #fff;
+
+        .card {
+            width: 20%; /* 카드 너비를 20%로 설정 (5개 카드 배치) */
+            box-sizing: border-box; /* padding, border 포함 */
+            height: auto;
+            display: flex;
+            flex-direction: column; /* 카드 내용 세로 정렬 */
+            justify-content: space-between; /* 내용 사이 간격 조정 */
+            border: 1px solid #ddd;
             padding: 10px;
             border-radius: 10px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
         .product img {
             width: 100%;
             height: 150px;
             object-fit: cover;
             border-radius: 10px;
         }
+
         .cart {
             margin-top: 20px;
             padding: 10px;
             background: #fff;
             border-radius: 10px;
         }
+
         button {
             background-color: #ff4081;
             color: white;
@@ -54,25 +66,19 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <h1>쇼핑 홈페이지</h1>
-    <div class="products" id="products">
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="티셔츠">
-            <p>티셔츠 - 20,000원</p>
-            <button onclick="addToCart('티셔츠', 20000)">장바구니 추가</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="청바지">
-            <p>청바지 - 40,000원</p>
-            <button onclick="addToCart('청바지', 40000)">장바구니 추가</button>
-        </div>
-        <div class="product">
-            <img src="https://via.placeholder.com/150" alt="스니커즈">
-            <p>스니커즈 - 60,000원</p>
-            <button onclick="addToCart('스니커즈', 60000)">장바구니 추가</button>
-        </div>
+<div th:each="product : ${theProducts}" class="product-container">
+    <div class="card">
+        <img th:src="@{${product.image_URL}}" alt="Product Image" class="product-image"/>
+        <h3 th:text="${product.name}">Product Name</h3>
+        <p th:text="${product.price}">Product Price</p>
+        <button
+                th:data-name="${product.name}"
+                th:data-price="${product.price}"
+                onclick="addToCart(this)">장바구니 추가
+        </button>
     </div>
+</div>
+
     <div class="cart">
         <h2>장바구니</h2>
         <ul id="cart-list"></ul>
@@ -80,7 +86,12 @@
 </div>
 
 <script>
-    function addToCart(name, price) {
+    function addToCart(buttonElement) {
+        // 버튼에서 data-* 속성 값 가져오기
+        const name = buttonElement.getAttribute('data-name');
+        const price = buttonElement.getAttribute('data-price');
+
+        // 장바구니 목록에 아이템 추가
         const cartList = document.getElementById('cart-list');
         const listItem = document.createElement('li');
         listItem.textContent = `${name} - ${price}원`;

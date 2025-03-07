@@ -16,8 +16,8 @@ public class SecurityConfig {
 
         JdbcUserDetailsManager userDetailsManager = new JdbcUserDetailsManager(dataSource);
 
-        userDetailsManager.setUsersByUsernameQuery("select name, password, role from products where name=?");
-        userDetailsManager.setAuthoritiesByUsernameQuery("select name, role from products where name=?");
+        userDetailsManager.setUsersByUsernameQuery("select name, password, true from users where name=?");
+        userDetailsManager.setAuthoritiesByUsernameQuery("select name, role from users  where name=?");
 
         return userDetailsManager;
     }
@@ -36,7 +36,7 @@ public class SecurityConfig {
                         formlogin ->
                                 formlogin.loginPage("/login-page")
                                         .loginProcessingUrl("/authenticateTheUser")
-                                        .defaultSuccessUrl("/shopping-homepage")
+                                        .defaultSuccessUrl("/shopping-homepage", true)
 
                 );
 

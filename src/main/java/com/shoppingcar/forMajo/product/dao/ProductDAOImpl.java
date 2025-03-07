@@ -60,6 +60,14 @@ public class ProductDAOImpl implements ProductDAO{
     }
 
     @Override
+    @Transactional
+    public void addIntoCart(Cart cart, Product product) {
+        cart.add(product);
+        entityManager.merge(cart);
+    }
+
+    @Override
+    @Transactional
     public Cart addCart() {
         Cart theCart = new Cart();
         entityManager.persist(theCart);

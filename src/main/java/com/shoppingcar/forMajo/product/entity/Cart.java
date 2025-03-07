@@ -2,6 +2,7 @@ package com.shoppingcar.forMajo.product.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,5 +32,13 @@ public class Cart {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+
+    public void add(Product product) {
+        if(products == null) {
+            products = new ArrayList<>();
+        }
+
+        products.add(product);
     }
 }
