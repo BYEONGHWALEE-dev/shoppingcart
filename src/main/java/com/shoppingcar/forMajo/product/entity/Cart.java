@@ -21,4 +21,15 @@ public class Cart {
             inverseJoinColumns = @JoinColumn(name = "products_id")
     )
     private List<Product> products;
+
+    @OneToOne(mappedBy = "cart")
+    private User user;
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
 }

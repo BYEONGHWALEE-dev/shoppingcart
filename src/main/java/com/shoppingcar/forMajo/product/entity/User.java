@@ -14,16 +14,29 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     @Column(name = "password")
     private String password;
 
     @Column(name = "role")
     private String role;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
     // constructor
     public User() {}
-    public User(String name, String role) {
+    public User(String name, String password, String role) {
         this.name = name;
+        this.password = password;
         this.role = role;
     }
 

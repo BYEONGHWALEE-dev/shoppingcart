@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쇼핑 홈페이지</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .products {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+        .product {
+            background: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 200px;
+        }
+        .product img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .cart {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 10px;
+        }
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>쇼핑 홈페이지</h1>
+    <div class="products" id="products">
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="티셔츠">
+            <p>티셔츠 - 20,000원</p>
+            <button onclick="addToCart('티셔츠', 20000)">장바구니 추가</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="청바지">
+            <p>청바지 - 40,000원</p>
+            <button onclick="addToCart('청바지', 40000)">장바구니 추가</button>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/150" alt="스니커즈">
+            <p>스니커즈 - 60,000원</p>
+            <button onclick="addToCart('스니커즈', 60000)">장바구니 추가</button>
+        </div>
+    </div>
+    <div class="cart">
+        <h2>장바구니</h2>
+        <ul id="cart-list"></ul>
+    </div>
+</div>
+
+<script>
+    function addToCart(name, price) {
+        const cartList = document.getElementById('cart-list');
+        const listItem = document.createElement('li');
+        listItem.textContent = `${name} - ${price}원`;
+        cartList.appendChild(listItem);
+    }
+</script>
+</body>
+</html>
