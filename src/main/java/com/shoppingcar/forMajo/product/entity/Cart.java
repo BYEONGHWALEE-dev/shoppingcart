@@ -35,8 +35,8 @@ public class Cart {
     }
 
     public void add(Product product) {
-        if(products == null) {
-            products = new ArrayList<>();
+        if(this.products == null) {
+            this.products = new ArrayList<>();
         }
 
         products.add(product);

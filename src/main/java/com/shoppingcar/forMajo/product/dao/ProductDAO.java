@@ -15,6 +15,11 @@ public interface ProductDAO {
 
     List<Product> getAllProducts();
 
+    User getUser(String name);
+
+    List<Product> getAllProductsFromCart(User user);
+
+
     // update method
     void modifyProductPrice(Product product, int price);
 

@@ -96,6 +96,20 @@
         const listItem = document.createElement('li');
         listItem.textContent = `${name} - ${price}원`;
         cartList.appendChild(listItem);
+
+        // 서버로 POST 전송
+        fetch("/add-to-cart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({ name: name })
+        })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);  // 응답 메시지 표시
+            })
+            .catch(error => console.error("Error:", error));
     }
 </script>
 </body>

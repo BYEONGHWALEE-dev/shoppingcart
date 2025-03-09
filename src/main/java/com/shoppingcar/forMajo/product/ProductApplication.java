@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.List;
+
 @SpringBootApplication
 public class ProductApplication {
 
@@ -18,15 +20,19 @@ public class ProductApplication {
 
 	}
 
-	/*
+
 	@Bean
 	CommandLineRunner commandLineRunner(ProductDAO productDAO) {
 		return args -> {
-			addUser(productDAO);
+			User theUser = productDAO.getUser("Majo");
+			List<Product> theProducts = productDAO.getAllProductsFromCart(theUser);
+			for(Product product : theProducts){
+				System.out.println(product.getName());
+			}
 		};
 	}
 
-
+	/*
 	public void addUser(ProductDAO productDAO) {
 		Cart cart = new Cart();
 

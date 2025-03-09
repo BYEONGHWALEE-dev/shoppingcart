@@ -2,6 +2,9 @@ package com.shoppingcar.forMajo.product.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -22,7 +25,10 @@ public class Product {
     @Column(name = "image_URL")
     private String image_URL;
 
-    //constructor
+    @ManyToMany(mappedBy = "products")
+    private List<Cart> carts;
+
+//constructor
 
     public Product() {}
 
@@ -55,5 +61,13 @@ public class Product {
 
     public void setImage_URL(String image_URL) {
         this.image_URL = image_URL;
+    }
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
     }
 }

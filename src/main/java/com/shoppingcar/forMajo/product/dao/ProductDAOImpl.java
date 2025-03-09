@@ -44,6 +44,24 @@ public class ProductDAOImpl implements ProductDAO{
         return theProducts;
     }
 
+    @Override
+    public User getUser(String name) {
+
+        TypedQuery<User> theQuery = entityManager.createQuery("SELECT u FROM User u WHERE u.name = :name", User.class);
+        theQuery.setParameter("name", name);
+
+        return theQuery.getSingleResult();
+    }
+
+    @Override
+    public List<Product> getAllProductsFromCart(User theUser) {
+        TypedQuery<Product> theQuery = entityManager.createQuery("SELECT c.products FROM Cart c WHERE c.user = :user", Product.class);
+        theQuery.setParameter("user", theUser);
+
+        return theQuery.getResultList();
+    }
+
+
     // updateProdcut -> 사실 modify임
     @Override
     @Transactional
@@ -63,6 +81,9 @@ public class ProductDAOImpl implements ProductDAO{
     @Transactional
     public void addIntoCart(Cart cart, Product product) {
         cart.add(product);
+        if (cart.getProducts().contains(product)){
+            System.out.println("It's added");
+        }
         entityManager.merge(cart);
     }
 

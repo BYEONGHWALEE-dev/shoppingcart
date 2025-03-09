@@ -38,7 +38,9 @@ public class SecurityConfig {
                                         .loginProcessingUrl("/authenticateTheUser")
                                         .defaultSuccessUrl("/shopping-homepage", true)
 
-                );
+                )
+                .csrf(csrf -> csrf.disable());
+
 
         return http.build();
     }
