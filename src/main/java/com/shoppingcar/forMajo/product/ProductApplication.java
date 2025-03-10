@@ -24,20 +24,24 @@ public class ProductApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(ProductDAO productDAO) {
 		return args -> {
+
 			User theUser = productDAO.getUser("Majo");
 			List<Product> theProducts = productDAO.getAllProductsFromCart(theUser);
-			for(Product product : theProducts){
+			for (Product product : theProducts) {
 				System.out.println(product.getName());
+
+
 			}
 		};
 	}
 
-	/*
+
+
 	public void addUser(ProductDAO productDAO) {
 		Cart cart = new Cart();
 
-		String bcryptPassword = new BCryptPasswordEncoder().encode("ilovebabyt");
-		User user = new User("Majo", bcryptPassword, "USER");
+		String bcryptPassword = new BCryptPasswordEncoder().encode("ilovebabybunny");
+		User user = new User("ByeongHwa", bcryptPassword, "USER");
 
 		//associate objects
 		user.setCart(cart);
@@ -47,5 +51,5 @@ public class ProductApplication {
 
 	}
 
-	*/
+
 }

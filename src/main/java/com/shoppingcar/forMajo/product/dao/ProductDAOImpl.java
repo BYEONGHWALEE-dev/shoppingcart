@@ -55,10 +55,13 @@ public class ProductDAOImpl implements ProductDAO{
 
     @Override
     public List<Product> getAllProductsFromCart(User theUser) {
-        TypedQuery<Product> theQuery = entityManager.createQuery("SELECT c.products FROM Cart c WHERE c.user = :user", Product.class);
-        theQuery.setParameter("user", theUser);
+        String userName = theUser.getName();
+        TypedQuery<Cart> theQuery = entityManager.createQuery("SELECT u.cart FROM User u WHERE  u.name= :userName", Cart.class);
+        theQuery.setParameter("userName", userName);
 
-        return theQuery.getResultList();
+        Cart theCart = theQuery.getSingleResult();
+
+        return theCart.getProducts();
     }
 
 
